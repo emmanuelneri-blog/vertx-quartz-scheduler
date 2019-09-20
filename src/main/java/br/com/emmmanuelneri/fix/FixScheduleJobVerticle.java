@@ -1,4 +1,4 @@
-package br.com.emmmanuelneri;
+package br.com.emmmanuelneri.fix;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
@@ -7,13 +7,13 @@ import org.quartz.Scheduler;
 import org.quartz.impl.JobDetailImpl;
 import org.quartz.impl.triggers.CronTriggerImpl;
 
-public class ScheduleJobVerticle extends AbstractVerticle {
+public class FixScheduleJobVerticle extends AbstractVerticle {
 
     private final Scheduler scheduler;
     private final String jobKey;
     private final String cronExpression;
 
-    public ScheduleJobVerticle(Scheduler scheduler, String jobKey, String cronExpression) {
+    public FixScheduleJobVerticle(Scheduler scheduler, String jobKey, String cronExpression) {
         this.scheduler = scheduler;
         this.jobKey = jobKey;
         this.cronExpression = cronExpression;
@@ -22,7 +22,7 @@ public class ScheduleJobVerticle extends AbstractVerticle {
     @Override
     public void start(final Promise<Void> startPromise) throws Exception {
         final JobDetailImpl jobDetail = new JobDetailImpl();
-        jobDetail.setJobClass(JobExecute.class);
+        jobDetail.setJobClass(FixJobExecute.class);
         jobDetail.setKey(new JobKey(jobKey));
 
         final CronTriggerImpl trigger = new CronTriggerImpl();

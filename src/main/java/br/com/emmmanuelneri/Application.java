@@ -1,5 +1,6 @@
 package br.com.emmmanuelneri;
 
+import br.com.emmmanuelneri.fix.FixScheduleJobVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
@@ -13,13 +14,12 @@ public class Application {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 
-    public static void main(final String[] args) throws SchedulerException, ParseException {
+    public static void main(final String[] args) throws SchedulerException {
         final Vertx vertx = Vertx.vertx();
 
         final Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 
-        vertx.deployVerticle(new ScheduleJobVerticle(scheduler, "Test", "*/2 * * * * ?"));
-        vertx.deployVerticle(new ScheduleJobVerticle(scheduler, "Test2", "*/2 * * * * ?"));
+        vertx.deployVerticle(new FixScheduleJobVerticle(scheduler, "Fix Job Test", "*/2 * * * * ?"));
 
         scheduler.start();
     }
