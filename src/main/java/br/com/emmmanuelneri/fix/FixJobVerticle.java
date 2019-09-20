@@ -7,13 +7,13 @@ import org.quartz.Scheduler;
 import org.quartz.impl.JobDetailImpl;
 import org.quartz.impl.triggers.CronTriggerImpl;
 
-public class FixScheduleJobVerticle extends AbstractVerticle {
+public class FixJobVerticle extends AbstractVerticle {
 
     private final Scheduler scheduler;
     private final String jobKey;
     private final String cronExpression;
 
-    public FixScheduleJobVerticle(Scheduler scheduler, String jobKey, String cronExpression) {
+    public FixJobVerticle(Scheduler scheduler, String jobKey, String cronExpression) {
         this.scheduler = scheduler;
         this.jobKey = jobKey;
         this.cronExpression = cronExpression;
