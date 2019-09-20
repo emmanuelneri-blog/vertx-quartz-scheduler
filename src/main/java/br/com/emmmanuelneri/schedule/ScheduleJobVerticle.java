@@ -1,4 +1,4 @@
-package br.com.emmmanuelneri.schedule.fix;
+package br.com.emmmanuelneri.schedule;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
