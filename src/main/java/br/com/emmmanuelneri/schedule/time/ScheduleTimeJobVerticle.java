@@ -12,22 +12,27 @@ import java.time.ZonedDateTime;
 public class ScheduleTimeJobVerticle extends AbstractVerticle {
 
     private final Scheduler scheduler;
-    private final String jobKey;
+    private final JobKey jobKey;
     private final int minutesToFire;
     private final String value;
 
     public ScheduleTimeJobVerticle(Scheduler scheduler, String jobKey, int minutesToFire, String value) {
         this.scheduler = scheduler;
-        this.jobKey = jobKey;
+        this.jobKey = new JobKey(jobKey);
         this.minutesToFire = minutesToFire;
         this.value = value;
     }
 
     @Override
     public void start(final Promise<Void> startPromise) throws Exception {
+        if (scheduler.checkExists(jobKey)) {
+            startPromise.complete();
+            return;
+        }
+
         final JobDetailImpl jobDetail = new JobDetailImpl();
         jobDetail.setJobClass(ScheduleTimeJobExecute.class);
-        jobDetail.setKey(new JobKey(jobKey));
+        jobDetail.setKey(jobKey);
 
         final JobDataMap jobDataMap = new JobDataMap();
         jobDataMap.put("value", value);
