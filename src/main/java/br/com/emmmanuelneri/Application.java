@@ -1,7 +1,7 @@
 package br.com.emmmanuelneri;
 
 import br.com.emmmanuelneri.fix.FixJobVerticle;
-import br.com.emmmanuelneri.schedule.ScheduleTimeJobVerticle;
+import br.com.emmmanuelneri.schedule.time.ScheduleTimeJobVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;

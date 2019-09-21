@@ -1,4 +1,4 @@
-package br.com.emmmanuelneri.schedule;
+package br.com.emmmanuelneri.schedule.time;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
@@ -26,7 +26,7 @@ public class ScheduleTimeJobVerticle extends AbstractVerticle {
     @Override
     public void start(final Promise<Void> startPromise) throws Exception {
         final JobDetailImpl jobDetail = new JobDetailImpl();
-        jobDetail.setJobClass(ScheduleJobExecute.class);
+        jobDetail.setJobClass(ScheduleTimeJobExecute.class);
         jobDetail.setKey(new JobKey(jobKey));
 
         final JobDataMap jobDataMap = new JobDataMap();
