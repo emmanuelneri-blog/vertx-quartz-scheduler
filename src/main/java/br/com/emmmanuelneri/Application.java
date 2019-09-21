@@ -1,7 +1,7 @@
 package br.com.emmmanuelneri;
 
 import br.com.emmmanuelneri.fix.FixJobVerticle;
-import br.com.emmmanuelneri.schedule.ScheduleJobVerticle;
+import br.com.emmmanuelneri.schedule.ScheduleTimeJobVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
@@ -19,7 +19,7 @@ public class Application {
         final Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 
         vertx.deployVerticle(new FixJobVerticle(scheduler, "Fix Job Test", "*/2 * * * * ?"));
-        vertx.deployVerticle(new ScheduleJobVerticle(scheduler, "Schedule Job to 1 minutes", 1, "Job 2 - 1 minute"));
+        vertx.deployVerticle(new ScheduleTimeJobVerticle(scheduler, "Schedule Job to 1 minutes", 1, "Job 2 - 1 minute"));
 
         scheduler.start();
     }

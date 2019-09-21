@@ -9,14 +9,14 @@ import java.sql.Date;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-public class ScheduleJobVerticle extends AbstractVerticle {
+public class ScheduleTimeJobVerticle extends AbstractVerticle {
 
     private final Scheduler scheduler;
     private final String jobKey;
     private final int minutesToFire;
     private final String value;
 
-    public ScheduleJobVerticle(Scheduler scheduler, String jobKey, int minutesToFire, String value) {
+    public ScheduleTimeJobVerticle(Scheduler scheduler, String jobKey, int minutesToFire, String value) {
         this.scheduler = scheduler;
         this.jobKey = jobKey;
         this.minutesToFire = minutesToFire;
