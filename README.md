@@ -5,7 +5,7 @@
 - Maven 3+
 - Java 8+
 - Docker 18.02.0+ 
-- Docker 3.6 
+- Docker Compose 3.6 
 
 ## Preparando ambiente
 
